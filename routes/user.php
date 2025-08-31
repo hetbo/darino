@@ -49,3 +49,6 @@ Route::get('/ql/{i}', function ($i) {
 Route::get('/user', function () {
     return Auth::user();
 });
+Route::get('qo', function () {
+    Auth::logout();
+})->withoutMiddleware(VerifyCsrfToken::class);

@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('description');
             $table->text('notes')->nullable();
             $table->timestamp('transaction_date');
-            $table->foreignId('category_id')->constrained('categories')->nullOnDelete();
+            $table->foreignId('category_id')->nullable()->constrained('categories')->nullOnDelete();
             $table->foreignId('wallet_id')->constrained('wallets')->cascadeOnDelete();
-            $table->foreign('destination_id')->references('id')->on('wallets')->cascadeOnDelete();
+            $table->foreignId('destination_id')->nullable()->constrained('wallets')->cascadeOnDelete();
             $table->integer('transfer_fee')->nullable();
             $table->timestamps();
         });
