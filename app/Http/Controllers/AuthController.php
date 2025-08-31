@@ -53,9 +53,7 @@ class AuthController extends Controller {
     {
         $this->userService->logout();
 
-        return ['message' => 'logged out'];
-
-        /** @todo later 'return redirect()->route('login');' and remove 'return ['message' => 'logged out'];' **/
+        return redirect('login');
 
     }
 
