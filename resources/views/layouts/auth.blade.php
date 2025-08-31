@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', config('app.name', 'Laravel'))</title>
+    <title>@yield('title', __('general.darino'))</title>
 
 
     <style>
@@ -31,12 +31,10 @@
     <nav class="relative z-10 px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <div class="w-8 h-8 bg-gradient-to-r from-rose-500 to-pink-500 rounded-lg flex items-center justify-center">
-                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                    </svg>
+                <div class="w-8 h-8  rounded-lg flex items-center justify-center">
+                    <img src="{{asset('storage/others/fav.png')}}" />
                 </div>
-                <span class="text-xl font-bold text-gray-800">{{ config('app.name', 'Laravel') }}</span>
+                <span class="text-xl font-bold text-gray-800">{{ __('general.darino') }}</span>
             </div>
 
             <div class="hidden md:flex items-center space-x-6">
@@ -45,35 +43,34 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
     <main class="relative z-10 flex items-center justify-center px-6 py-12">
         <div class="w-full max-w-md">
-            <!-- Card Container -->
+
             <div class="bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl border border-white/50 p-8">
-                <!-- Header -->
+
                 <div class="text-center mb-8">
                     @yield('header')
                 </div>
 
-                <!-- Content -->
+
                 <div class="space-y-6">
                     @yield('content')
                 </div>
 
-                <!-- Footer -->
+
                 <div class="mt-8 pt-6 border-t border-gray-100 text-center">
                     @yield('footer')
                 </div>
             </div>
 
-            <!-- Additional Links -->
+
             <div class="mt-6 text-center">
                 @yield('additional-links')
             </div>
         </div>
     </main>
 
-    <!-- Toast/Flash Messages -->
+
     @if(session('status'))
         <div class="fixed top-4 right-4 z-50 max-w-sm bg-green-50 border border-green-200 rounded-lg p-4 shadow-lg">
             <div class="flex items-center">
@@ -105,7 +102,6 @@
     @endif
 </div>
 
-<!-- Auto-hide flash messages -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         setTimeout(function() {

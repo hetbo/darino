@@ -41,7 +41,7 @@
                     autocomplete="email"
                     required
                     value="{{ old('email') }}"
-                    class="block w-full pr-10 pl-3 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent bg-gray-50/50 backdrop-blur-sm transition-all @error('email') border-red-300 @enderror"
+                    class="block w-full pr-10 pl-3 py-3 border outline-none border-gray-200 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent bg-gray-50/50 backdrop-blur-sm transition-all @error('email') border-red-300 @enderror"
                     placeholder="{{ __('auth.enter_your_email') }}"
                 >
             </div>
@@ -66,7 +66,7 @@
                     type="password"
                     autocomplete="current-password"
                     required
-                    class="block w-full pr-10 pl-12 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent bg-gray-50/50 backdrop-blur-sm transition-all @error('password') border-red-300 @enderror"
+                    class="block w-full pr-10 pl-12 py-3 border outline-none border-gray-200 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent bg-gray-50/50 backdrop-blur-sm transition-all @error('password') border-red-300 @enderror"
                     placeholder="{{ __('auth.enter_your_password') }}"
                 >
                 <button
