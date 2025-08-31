@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Exceptions\EmailNotVerifiedException;
 use App\Mail\PasswordResetMail;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -26,10 +27,9 @@ class UserService {
 
         $user = Auth::user();
 
-        /** @todo generate a signed url and show email input to user with a send verification link button and send verify email **/
         if (!$user->email_verified_at) {
             Auth::logout();
-            throw new \Exception('Email not verified');
+            throw new EmailNotVerifiedException();
         }
 
         return true;

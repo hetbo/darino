@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\EmailNotVerifiedException;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\URL;
 
 class AuthController extends Controller {
 
@@ -18,40 +21,32 @@ class AuthController extends Controller {
 
         $user->sendEmailVerificationNotification();
 
-//        auth()->login($user);
+        $signedUrl = URL::signedRoute('verification.notice', now()->addMinutes(60));
 
-        return $user;
-
-        /** @todo redirect to verify email page (landing) and remove 'return $user;' **/
-
+        return redirect($signedUrl);
     }
 
     public function login(LoginRequest $request)
     {
+
         $credentials = $request->only(['email', 'password']);
         $remember = $request->boolean('remember');
 
         try {
+
             if (!$this->userService->login($credentials, $remember)) {
-                return response()->json(['message' => __('auth.invalid_credentials')], 401);
-/*
+
                 return back()->withErrors([
-                    'email' => __('auth.failed')
+                    'email' => __('auth.invalid_credentials')
                 ])->withInput($request->except('password'));
-*/
+
             }
 
-            return response()->json([
-                'message' => 'Login successful',
-                'user' => auth()->user()
-            ]);
+            return redirect()->route('dashboard');
 
-        } catch (\Exception $e) {
-            return response()->json(['message' => $e->getMessage()], 403);
+        } catch (EmailNotVerifiedException $e) {
+            return redirect(URL::temporarySignedRoute('verification.notice', now()->addMinutes(60)));
         }
-
-        /** @todo get back to login form with errors instead of returning json response **/
-
     }
 
     public function logout()
@@ -77,10 +72,6 @@ class AuthController extends Controller {
 
         try {
             $verified = $this->userService->verifyEmail($userId, $hash);
-
-            if (!$verified) {
-                return redirect('/email/verify')->with('message', __('auth.email_already_verified'));
-            }
 
             return redirect('/dashboard')->with('success', __('auth.email_verified_success'));
 
