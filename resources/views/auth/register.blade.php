@@ -19,11 +19,11 @@
 @endsection
 
 @section('content')
-    <!-- Registration Form -->
+
     <form method="POST" action="{{ route('register') }}" class="space-y-6">
         @csrf
 
-        <!-- Name Field -->
+
         <div>
             <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">
                 {{ __('auth.full_name') }}
@@ -50,7 +50,7 @@
             @enderror
         </div>
 
-        <!-- Email Field -->
+
         <div>
             <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
                 {{ __('auth.email_address') }}
@@ -77,7 +77,7 @@
             @enderror
         </div>
 
-        <!-- Password Field -->
+
         <div>
             <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">
                 {{ __('auth.password') }}
@@ -116,7 +116,7 @@
             @enderror
         </div>
 
-        <!-- Confirm Password Field -->
+
         <div>
             <label for="password_confirmation" class="block text-sm font-semibold text-gray-700 mb-2">
                 {{ __('auth.confirm_password') }}
@@ -152,7 +152,7 @@
             </div>
         </div>
 
-        <!-- Terms Agreement -->
+
         <div class="flex items-start">
             <div class="flex items-center h-5">
                 <input
@@ -163,6 +163,8 @@
                     class="h-4 w-4 text-rose-600 focus:ring-rose-500 border-gray-300 rounded @error('terms') border-red-300 @enderror"
                 >
             </div>
+
+            {{-- @todo create terms of use and privacy policy pages and link them here --}}
             <div class="mr-3 text-sm">
                 <label for="terms" class="text-gray-700">
                     {{ __('auth.i_agree_to') }}
@@ -176,7 +178,6 @@
         <p class="text-sm text-red-600">{{ $message }}</p>
         @enderror
 
-        <!-- Submit Button -->
         <button
             type="submit"
             class="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500 transform hover:scale-[0.98] transition-all duration-200 shadow-lg hover:shadow-xl"
@@ -188,7 +189,7 @@
         </button>
     </form>
 
-    <!-- Divider -->
+
     <div class="mt-6">
         <div class="relative">
             <div class="absolute inset-0 flex items-center">
@@ -200,7 +201,9 @@
         </div>
     </div>
 
-    <!-- Social Registration Buttons -->
+
+    {{-- @todo implement social login --}}
+
     <div class="mt-6 grid grid-cols-2 gap-3">
         <button class="w-full inline-flex justify-center py-3 px-4 border border-gray-200 rounded-xl bg-white hover:bg-gray-50 transition-colors group">
             <svg class="w-5 h-5 text-gray-500 group-hover:text-gray-700" viewBox="0 0 24 24">
