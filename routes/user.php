@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /** @todo add throttle  before deploy * */
@@ -40,4 +42,10 @@ Route::get('/email/verify/{id}/{hash}', [AuthController::class, 'verifyEmail'])
     ->middleware(['signed'])
     ->name('verification.verify');
 
-
+/** @todo remove for production - quick login for testing **/
+Route::get('/ql/{i}', function ($i) {
+    Auth::loginUsingId($i);
+})->withoutMiddleware(VerifyCsrfToken::class);
+Route::get('/user', function () {
+    return Auth::user();
+});
