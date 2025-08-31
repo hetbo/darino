@@ -22,7 +22,7 @@
 @endsection
 
 @section('content')
-    <!-- Verification Status -->
+
     <div class="bg-blue-50 border border-blue-100 rounded-xl p-6 text-center">
         <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -30,15 +30,13 @@
             </svg>
         </div>
         <h3 class="text-lg font-semibold text-blue-900 mb-2">{{ __('auth.check_your_inbox') }}</h3>
-{{--        <p class="text-blue-700 text-sm">--}}
-{{--            {{ __('auth.verification_email_sent_to') }} <strong>{{ auth()->user()->email }}</strong>--}}
-{{--        </p>--}}
+
         <p class="text-blue-600 text-sm mt-2">
             {{ __('auth.click_link_to_verify') }}
         </p>
     </div>
 
-    <!-- Resend Verification -->
+
     <div class="space-y-4">
         <div class="text-center">
             <p class="text-sm text-gray-600 mb-4">{{ __('auth.didnt_receive_email') }}</p>
@@ -77,7 +75,6 @@
             </form>
         </div>
 
-        <!-- Help Section -->
         <div class="bg-gray-50 border border-gray-100 rounded-xl p-4">
             <h4 class="text-sm font-semibold text-gray-800 mb-2">{{ __('auth.still_having_trouble') }}</h4>
             <div class="text-sm text-gray-600 space-y-1">

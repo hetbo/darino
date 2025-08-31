@@ -71,7 +71,7 @@
     </main>
 
 
-    @if(session('status'))
+    @if(session('message'))
         <div class="fixed top-4 right-4 z-50 max-w-sm bg-green-50 border border-green-200 rounded-lg p-4 shadow-lg">
             <div class="flex items-center">
                 <div class="flex-shrink-0">
@@ -80,7 +80,7 @@
                     </svg>
                 </div>
                 <div class="mr-3">
-                    <p class="text-sm font-medium text-green-800">{{ session('status') }}</p>
+                    <p class="text-sm font-medium text-green-800">{{ session('message') }}</p>
                 </div>
             </div>
         </div>

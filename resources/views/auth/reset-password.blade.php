@@ -19,14 +19,14 @@
 @endsection
 
 @section('content')
-    <!-- Password Reset Form -->
+
     <form method="POST" action="{{ route('password.update') }}" class="space-y-6">
         @csrf
 
-        <!-- Hidden Token -->
+
         <input type="hidden" name="token" value="{{ request()->route('token') }}">
 
-        <!-- Email Field -->
+
         <div>
             <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
                 {{ __('auth.email_address') }}
@@ -46,7 +46,6 @@
                     value="{{ old('email', request()->email) }}"
                     class="block w-full pr-10 pl-3 py-3 border outline-none border-gray-200 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent bg-gray-50/50 backdrop-blur-sm transition-all @error('email') border-red-300 @enderror"
                     placeholder="{{ __('auth.enter_email_address') }}"
-                    style="font-family: monospace; font-size: 18px;"
                 >
             </div>
             @error('email')
@@ -54,7 +53,7 @@
             @enderror
         </div>
 
-        <!-- Password Field -->
+
         <div>
             <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">
                 {{ __('auth.new_password') }}
@@ -73,7 +72,6 @@
                     required
                     class="block w-full pr-10 pl-12 py-3 border outline-none border-gray-200 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent bg-gray-50/50 backdrop-blur-sm transition-all @error('password') border-red-300 @enderror"
                     placeholder="{{ __('auth.enter_new_password_field') }}"
-                    style="font-family: monospace; font-size: 18px;"
                 >
                 <button
                     type="button"
@@ -94,7 +92,7 @@
             @enderror
         </div>
 
-        <!-- Confirm Password Field -->
+
         <div>
             <label for="password_confirmation" class="block text-sm font-semibold text-gray-700 mb-2">
                 {{ __('auth.confirm_new_password') }}
@@ -113,7 +111,6 @@
                     required
                     class="block w-full pr-10 pl-12 py-3 border outline-none border-gray-200 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent bg-gray-50/50 backdrop-blur-sm transition-all"
                     placeholder="{{ __('auth.confirm_new_password_field') }}"
-                    style="font-family: monospace; font-size: 18px;"
                 >
                 <button
                     type="button"
@@ -131,7 +128,7 @@
             </div>
         </div>
 
-        <!-- Submit Button -->
+
         <button
             type="submit"
             class="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500 transform hover:scale-[0.98] transition-all duration-200 shadow-lg hover:shadow-xl"
@@ -143,7 +140,7 @@
         </button>
     </form>
 
-    <!-- Security Info -->
+
     <div class="bg-green-50 border border-green-100 rounded-xl p-4">
         <div class="flex items-start">
             <div class="flex-shrink-0">

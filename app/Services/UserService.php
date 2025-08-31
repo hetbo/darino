@@ -110,7 +110,6 @@ class UserService {
 
         $user->update(['password' => Hash::make($password)]);
 
-        // Delete used token
         DB::table('password_reset_tokens')->where('email', $email)->delete();
 
         return true;

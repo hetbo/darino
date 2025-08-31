@@ -202,6 +202,8 @@
     </div>
 
 
+
+
     {{-- @todo implement social login --}}
 
     <div class="mt-6 grid grid-cols-2 gap-3">

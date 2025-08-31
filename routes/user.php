@@ -1,8 +1,6 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /** @todo add throttle  before deploy * */

@@ -19,11 +19,11 @@
 @endsection
 
 @section('content')
-    <!-- Password Reset Form -->
+
     <form method="POST" action="{{ route('password.email') }}" class="space-y-6">
         @csrf
 
-        <!-- Email Field -->
+
         <div>
             <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
                 {{ __('auth.email_address') }}
@@ -41,7 +41,7 @@
                     autocomplete="email"
                     required
                     value="{{ old('email') }}"
-                    class="block w-full pr-10 pl-3 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent bg-gray-50/50 backdrop-blur-sm transition-all @error('email') border-red-300 @enderror"
+                    class="block w-full pr-10 pl-3 py-3 border outline-none border-gray-200 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent bg-gray-50/50 backdrop-blur-sm transition-all @error('email') border-red-300 @enderror"
                     placeholder="{{ __('auth.enter_email_address') }}"
                 >
             </div>
@@ -50,7 +50,7 @@
             @enderror
         </div>
 
-        <!-- Submit Button -->
+
         <button
             type="submit"
             class="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500 transform hover:scale-[0.98] transition-all duration-200 shadow-lg hover:shadow-xl"
@@ -62,7 +62,7 @@
         </button>
     </form>
 
-    <!-- Info Box -->
+
     <div class="bg-rose-50 border border-rose-100 rounded-xl p-4">
         <div class="flex items-start">
             <div class="flex-shrink-0">
