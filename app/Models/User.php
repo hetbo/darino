@@ -36,6 +36,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'remember_token',
     ];
 
+    public function transactions(): HasMany
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -84,6 +89,41 @@ class User extends Authenticatable implements MustVerifyEmail
     public function wallets()
     {
         return $this->hasMany(Wallet::class);
+    }
+
+
+    public function getTotalBalance(): int
+    {
+        return $this->wallets()->sum('balance');
+    }
+
+    public function getFormattedTotalBalance(): string
+    {
+        return number_format($this->getTotalBalance() / 100, 2);
+    }
+
+    public function getMonthlyExpenses($month = null, $year = null): int
+    {
+        $month = $month ?? now()->month;
+        $year = $year ?? now()->year;
+
+        return $this->transactions()
+            ->where('type', 'expense')
+            ->whereMonth('transaction_date', $month)
+            ->whereYear('transaction_date', $year)
+            ->sum('amount');
+    }
+
+    public function getMonthlyIncome($month = null, $year = null): int
+    {
+        $month = $month ?? now()->month;
+        $year = $year ?? now()->year;
+
+        return $this->transactions()
+            ->where('type', 'income')
+            ->whereMonth('transaction_date', $month)
+            ->whereYear('transaction_date', $year)
+            ->sum('amount');
     }
 
 }

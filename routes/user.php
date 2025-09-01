@@ -44,11 +44,13 @@ Route::get('/email/verify/{id}/{hash}', [AuthController::class, 'verifyEmail'])
 
 /** @todo remove for production - quick login for testing **/
 Route::get('/ql/{i}', function ($i) {
+    if (auth()->user()) {
+        Auth::logout();
+        return ['logged out'];
+    }
     Auth::loginUsingId($i);
+    return ['logged in as ' . auth()->user()->name];
 })->withoutMiddleware(VerifyCsrfToken::class);
 Route::get('/user', function () {
     return Auth::user();
 });
-Route::get('qo', function () {
-    Auth::logout();
-})->withoutMiddleware(VerifyCsrfToken::class);
