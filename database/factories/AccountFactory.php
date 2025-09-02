@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,20 @@ class AccountFactory extends Factory
      */
     public function definition(): array
     {
+        $accountTypes = [
+            'Bank Account',
+            'Cash Account',
+            'Credit Card',
+            'Investment Account',
+            'Savings Account',
+            'Checking Account',
+        ];
+
         return [
-            //
+            'user_id' => User::factory(),
+            'name' => fake()->randomElement($accountTypes) . ' - ' . fake()->company(),
+            'currency' => fake()->randomElement(['IRT', 'IRR']),
+            'balance' => 0,
         ];
     }
 }
