@@ -1,3 +1,6 @@
+@php
+$unreadNotifications = 3;
+ @endphp
 <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
     <div class="px-3 py-3 lg:px-5 lg:pl-3">
 
@@ -12,15 +15,28 @@
                     </svg>
                 </button>
 
-                <a href="https://hetbo.net" class="flex ms-2 md:me-24">
+                <a href="https://hetbo.net" class="hidden sm:flex mx-2">
                     <img src="{{asset('storage/others/fav.png')}}" class="h-8 me-3" alt="Darino Logo" />
                     <span class="self-center text-lg font-semibold sm:text-xl whitespace-nowrap dark:text-white">@lang('general.darino')</span>
                 </a>
+
+                <div class="flex flex-col mr-2">
+                    <span class="text-sm font-semibold text-neutral-800">@lang('general.welcome') {{explode(' ', $user->name)[0]}}!</span>
+                    <span class="text-xs text-gray-500">
+                        @lang('general.app-description')
+                    </span>
+                </div>
             </div>
 
             <div class="flex items-center">
                 <div class="flex items-center mx-3">
-                    <div>
+                    <div class="flex items-center space-x-2">
+
+                        <div class="relative cursor-pointer hover:bg-black/10 p-2 rounded-full">
+                            <x-my-bell class="w-5 h-5" />
+                            <span class="{{$unreadNotifications ?? 'hidden'}} top-0 right-1 absolute text-white bg-rose-500 rounded-full text-xs px-1">{{$unreadNotifications ?? 0}}</span>
+                        </div>
+
                         <button type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
                             <span class="sr-only">Open user menu</span>
                             <img class="w-8 h-8 rounded-full" src="{{asset('storage/avatars/' . $profile->avatar)}}" alt="user photo">
