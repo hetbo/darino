@@ -12,6 +12,6 @@ require __DIR__ . '/transaction.php';
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/dash/{account}', [TestController::class, 'dash'])->name('test.dash');

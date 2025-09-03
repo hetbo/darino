@@ -126,4 +126,9 @@ class User extends Authenticatable implements MustVerifyEmail
             ->sum('amount');
     }
 
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
+
 }

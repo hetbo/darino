@@ -32,8 +32,6 @@ Route::middleware('auth')->group(function () {
     /** @todo remove this in production * */
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    Route::view('/dashboard', 'user.dashboard')->name('dashboard');
-
     Route::get('/profile')->name('user-profile-information.update');
 
 });

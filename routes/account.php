@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')
     ->controller(AccountController::class)
-    ->withoutMiddleware(VerifyCsrfToken::class) /** @todo remove this line for production **/
     ->prefix('accounts')
     ->name('accounts.')
     ->group(function () {

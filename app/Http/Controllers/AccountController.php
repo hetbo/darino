@@ -8,6 +8,7 @@ use App\Models\Account;
 use App\Services\AccountService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class AccountController extends Controller
 {
@@ -22,14 +23,13 @@ class AccountController extends Controller
         ]);
     }
 
-    public function store(CreateAccountRequest $request): JsonResponse
+    public function store(CreateAccountRequest $request)
     {
+
         $account = $this->accountService->createAccount($request->user(), $request->validated());
 
-        return response()->json([
-            'data' => $account,
-            'message' => 'Account created successfully.'
-        ], 201);
+        return redirect()->route('dashboard.account', $account);
+
     }
 
     public function show(Request $request, Account $account): JsonResponse
