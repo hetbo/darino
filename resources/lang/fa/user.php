@@ -7,4 +7,9 @@ return [
     'choose-currency' => 'انتخاب واحد پول',
     'currency' => 'واحد پول',
     'create-account' => 'ساخت حساب',
+    'dashboard' => 'پنل کاربری',
+    'settings' => 'تنظیمات',
+    'reports' => 'گزارشات',
+    'logout' => 'خروج',
+
 ];

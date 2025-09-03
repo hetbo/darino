@@ -8,9 +8,9 @@ use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\URL;
 
+/** @final Authentication Flow is Complete **/
 class AuthController extends Controller {
 
     public function __construct(protected UserService  $userService) {}

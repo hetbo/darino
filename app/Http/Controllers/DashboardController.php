@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Account;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class DashboardController extends Controller {
 
+    use AuthorizesRequests;
 
+
+    /** @final check for last used account to redirect accordingly **/
+    /** @route dashboard **/
     public function dashboard()
     {
         $last_used_account = auth()->user()->profile->last_used_account;
@@ -21,14 +25,31 @@ class DashboardController extends Controller {
 
     }
 
+    /** @final opens dashboard/{account} and set the last_used_account for future returns **/
+    /** @route dashboard.account **/
     public function index(Account $account)
     {
+
+        $this->authorize('view', $account);
+
         $profile = auth()->user()->profile;
         $profile->last_used_account = $account->id;
         $profile->save();
 
         $user = User::with('profile', 'accounts')->where('id', auth()->id())->first();
-        return view('user.dashboard', compact('user'));
+        return view('layouts.user-panel', compact('user'));
+    }
+
+    /** @final sets last_used_account to NULL and opens dashboard route [list of accounts + ability to create new account] **/
+    /** @route create-new-account **/
+    public function newAccount()
+    {
+        $profile = auth()->user()->profile;
+        $profile->last_used_account = null;
+        $profile->save();
+
+        return redirect()->route('dashboard');
+
     }
 
 }

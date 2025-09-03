@@ -23,6 +23,7 @@ class AccountController extends Controller
         ]);
     }
 
+    /** @final creates a new account and redirects to dashboard/{account} **/
     public function store(CreateAccountRequest $request)
     {
 
