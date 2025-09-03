@@ -88,7 +88,11 @@
             {{-- @todo add saidbar links one by one --}}
 
             <li>
-                <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <a href="{{route('panel.wallets', $accountId)}}"
+                   class="flex items-center p-2 rounded-lg group
+                   {{ request()->routeIs('*wallets*')
+                    ? 'bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-white'
+                    : 'text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700' }}">
                     <x-my-wallet class="w-5 h-5" />
                     <span class="flex-1 ms-3 whitespace-nowrap">@lang('user.wallet-management')</span>
                 </a>

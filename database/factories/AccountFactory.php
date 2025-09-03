@@ -28,7 +28,7 @@ class AccountFactory extends Factory
 
         return [
             'user_id' => User::factory(),
-            'name' => fake()->randomElement($accountTypes) . ' - ' . fake()->company(),
+            'name' => fake()->company(),
             'currency' => fake()->randomElement(['IRT', 'IRR']),
             'balance' => 0,
         ];

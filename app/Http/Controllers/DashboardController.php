@@ -13,6 +13,7 @@ class DashboardController extends Controller {
 
     /** @final check for last used account to redirect accordingly **/
     /** @route dashboard **/
+    /** @API GET /dashboard **/
     public function dashboard()
     {
         $last_used_account = auth()->user()->profile->last_used_account;
@@ -27,6 +28,7 @@ class DashboardController extends Controller {
 
     /** @final opens dashboard/{account} and set the last_used_account for future returns **/
     /** @route dashboard.account **/
+    /** @API GET /dashboard/{account} **/
     public function index(Account $account)
     {
 
@@ -42,6 +44,7 @@ class DashboardController extends Controller {
 
     /** @final sets last_used_account to NULL and opens dashboard route [list of accounts + ability to create new account] **/
     /** @route create-new-account **/
+    /** @API GET /new-account **/
     public function newAccount()
     {
         $profile = auth()->user()->profile;
@@ -50,6 +53,17 @@ class DashboardController extends Controller {
 
         return redirect()->route('dashboard');
 
+    }
+
+    /** @route panel.wallets **/
+    /** @API GET /dashboard/{account}/wallets **/
+    public function viewWallets(Account $account)
+    {
+        $this->authorize('view', $account);
+
+        $wallets = $account->wallets;
+
+        return view('user.wallets', compact('wallets'));
     }
 
 }

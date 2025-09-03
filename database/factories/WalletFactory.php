@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Account;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -46,6 +47,7 @@ class WalletFactory extends Factory
 
         return [
             'user_id' => User::factory(),
+            'account_id' => Account::factory(),
             'name' => fake()->randomElement($walletTypes) . ' - ' . fake()->word(),
             'currency' => fake()->randomElement(['IRT', 'IRR']),
             'initial_balance' => $initialBalance,

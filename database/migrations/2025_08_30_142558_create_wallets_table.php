@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('wallets', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('account_id')->constrained('accounts')->cascadeOnDelete();
             $table->string('name');
             $table->enum('currency', ['IRT', 'IRR'])->default('IRT');
             $table->integer('initial_balance')->default(0);

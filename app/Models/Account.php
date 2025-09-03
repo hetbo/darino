@@ -27,4 +27,9 @@ class Account extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function wallets()
+    {
+        return $this->hasMany(Wallet::class);
+    }
+
 }

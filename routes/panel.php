@@ -10,4 +10,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/new-account', [DashboardController::class, 'newAccount'])->name('create-new-account');
 
+    Route::get('/dashboard/{account}/wallets', [DashboardController::class, 'viewWallets'])->name('panel.wallets');
+
 });
