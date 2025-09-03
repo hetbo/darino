@@ -11,5 +11,10 @@ return [
     'settings' => 'تنظیمات',
     'reports' => 'گزارشات',
     'logout' => 'خروج',
+    'wallet-management' => 'مدیریت کیف پول',
+    'categories' => 'دسته بندی ها',
+    'loans' => 'اقساط و وام ها',
+    'debts' => 'قرض و طلب',
+    'cheque-management' => 'مدیریت چک ها',
 
 ];

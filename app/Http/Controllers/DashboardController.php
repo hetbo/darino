@@ -37,7 +37,7 @@ class DashboardController extends Controller {
         $profile->save();
 
         $user = User::with('profile', 'accounts')->where('id', auth()->id())->first();
-        return view('layouts.user-panel', compact('user'));
+        return view('user.dashboard', compact('user'));
     }
 
     /** @final sets last_used_account to NULL and opens dashboard route [list of accounts + ability to create new account] **/
